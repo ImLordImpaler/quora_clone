@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class='container mt-5 bg-white p-4 border border-dark rounded'>
+    <div class='row '>
+        <h3>{{question.question_text}}</h3>
+        
+       
+            <p>{{upvotes}} Upvotes | {{downvotes}} Downvote | {{question.created}}</p>
+            <div class='d-flex justify-content-around w-40'>
+            <a href="{% url 'react' question.id 1%}" style="text-decoration: none; color: blue;"> &uarr; upvote? </a>
+             <a href="{% url 'react' question.id 0%}" style="text-decoration: none; color: red;"> &darr; Downvote? </a>
+            </div>
+       
+    </div>
+    <hr class='mt-3'>
+    <div class='row'>
+        {% for answer in answers  %}
+        <div class="card my-4 py-3 d-flex flex-row justify-content-around" >
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/001/840/618/small/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg" style="height: 70px; width: 70px;" class="card-img-top" alt="...">
+            <div class="card-body d-flex flex-column">
+                <h5> {{answer.user.username}}</h5>
+              <p class="card-text">{{answer.answer_text}}</p>
+            </div>
+          </div>
+        {% endfor %}
+    </div>
+    <div class ='row mt-5'>
+        <form method="POST" action="{% url 'view_question' question.id %}"> {% csrf_token %}
+            
+            <input type='text' class='form-control' placeholder="Enter a comment?" name = 'comment_text'/>
+            
+            <button class='btn btn-primary btn-sm mt-2' type='submit'>Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}

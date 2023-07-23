@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+{%block content%}
+    <div class ='container my-5 '>
+        <div class="jumbotron">
+            <h1 class="display-4">Something on your mind?</h1>
+            <p class="lead"></p>
+            
+            <form method="POST" action="{% url 'homepage' %}">{% csrf_token %}
+                <textarea required type='text' name="question_text" class='form-control' rows='3'></textarea>
+                <br>
+                <button class='btn btn-primary' type='submit'>Submit</button>
+            </form>
+            
+        </div>
+
+    <hr class='mt-4'>
+        {% for i in questions %}
+            <div class="card my-3" >
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{% url "view_question" i.id%}" style='text-decoration:None;'>{{i.question_text}}</a></h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">{{i.user.username}}</h6>
+                    <p class="card-text">Total Answers: <b>{{i.get_answers}}</b> </p>
+                </div>
+            </div>
+          {% endfor %}
+    </div>
+{% endblock %}

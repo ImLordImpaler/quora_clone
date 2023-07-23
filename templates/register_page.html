@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Registration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    </head>
+
+    <body  style='border: 1px solid black; border-radius:5px; background-image: url("https://img.freepik.com/free-photo/blue-wall-background_53876-88663.jpg?w=900&t=st=1690138197~exp=1690138797~hmac=43791d89c7ba1ad8ac94b89e31c7ed779e9a1fdbf96b7dfc08ad3ba4aa5f95cd")'>
+       
+        <div class='container mt-5'> 
+            <div class='row'>
+                <div class='login_box p-3 bg-white'>
+                    <h1>Register Page</h1>
+                    <form method='POST' action="{% url 'register_user' %}"> {% csrf_token %}
+                        
+                        <div class="form-outline mb-4">
+                            <input type="text" name='username_field' id="username_field" class="form-control" />
+                            <label class="form-label" for="username_field">Username</label>
+                        </div>  
+                        <div class="form-outline mb-4">
+                            <input type="email" name='username_field' id="username_email" class="form-control" />
+                            <label class="form-label" for="username_email">Email Address</label>
+                        </div> 
+
+                        <div class="form-outline mb-4">
+                            <input type="password" name='password_field1' id="form2Example4" class="form-control" />
+                            <label class="form-label" for="form2Example4">Password</label>
+                        </div>
+                        <div class="form-outline mb-4">
+                            <input type="password" name='password_field2' id="form2Example2" class="form-control" />
+                            <label class="form-label" for="form2Example2">re-enter Password</label>
+                        </div>
+                    
+                    
+                        <button type="submit" class="btn btn-primary btn-block mb-4">Register</button>
+                    
+                        <center>Already Registed? <a href="{% url 'login_page' %}">Login?</a></center>
+                        
+                    </form>
+                </div>
+            
+            </div>
+            </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    
+    
+    </body>
+</html>
